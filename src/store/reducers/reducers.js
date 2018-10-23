@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
 import Constants from "../../lib/constants";
 
-const articles = (state = {}, action) => {
+const articles = (state = {requestSuccess: false}, action) => {
     switch (action.type) {
         case Constants.Actions.GET_ARTICLES_LIST_SUCCESS: 
             return {

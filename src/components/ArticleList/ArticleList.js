@@ -8,13 +8,18 @@ class ArticleList extends Component {
        
     }
 
+    goToArticleHandler = (index) => {
+        const { navigate } = this.props.navigation
+        navigate('Article', {index: index})
+    }
+
     render() {
         if(!this.props.articles) return <View><Text>Ups..</Text></View>
         return(
             <View style={styles.list}>
                 <FlatList 
                     data={this.props.articles}
-                    renderItem={({item}) => <ArticleItem config={item} />}
+                    renderItem={({item, index}) => <ArticleItem index={index} goToArticle={this.goToArticleHandler} navigation={this.props.navigation} config={item} />}
                     keyExtractor={(item, index) => item.text}
                 />
             </View>
@@ -32,7 +37,7 @@ const styles = StyleSheet.create({
     list: {
         width: '100%',
         height: '100%',
-        paddingBottom: 50
+        // paddingBottom: 50
     }
 })
 

@@ -8,7 +8,7 @@ function Header (props) {
             <View style={styles.headerMenuButton}>
                 <Icon name='reorder' style={{color: 'white'}}/>
             </View>
-            <Text style={styles.headerText}>Articles</Text>
+            <Text style={styles.headerText}>{props.title}</Text>
             <View style={styles.headerSearchButton}>
                 <Icon name='search' style={{color: 'white'}} />
             </View>   

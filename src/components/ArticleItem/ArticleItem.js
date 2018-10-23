@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Text, Image} from 'react-native';
+import {StyleSheet, View, Text, Image, TouchableOpacity} from 'react-native';
 import Tag from '../Tag/Tag'
 import ViewCounter from '../Counters/ViewCounter/ViewCounter'
 import LikesCounter from '../Counters/LikesCounter/LikesCounter'
@@ -11,8 +11,9 @@ function ArticleItem(props) {
         <Tag tagName={item} key={item} />
     ))
 
+
     return(
-        <View style={styles.ArticleItem}>
+        <TouchableOpacity style={styles.ArticleItem} onPress={props.goToArticle.bind(this, props.index)}>
             <Image style={styles.image} source={props.config.img} />
             <View style={styles.info}>
                 <View style={styles.description}>
@@ -27,7 +28,7 @@ function ArticleItem(props) {
                     <ComentsCounter amount={props.config.coments}/>
                 </View>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 

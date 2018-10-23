@@ -16,7 +16,8 @@ const articlesTemp = [
         coments: [
             {text: 'Some coments 1'},
             {text: 'Some coments 1'}
-        ]
+        ],
+        mainText: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium, iure fuga debitis dicta, ducimus accusantium quasi dolor non voluptatem minus id expedita sint inventore repellat ab odit fugit officiis! Beatae neque quis vel autem, doloremque eveniet expedita quisquam sint at eum. Quidem laborum neque pariatur quam et, sed, dicta odit consectetur modi voluptates necessitatibus sapiente quia vitae maxime totam consequuntur porro perspiciatis. Harum itaque consequatur error. Quibusdam repellendus repellat, esse sapiente iusto quidem, nemo tempore quo vitae dolores error quam dolorum voluptate minima. Ab quaerat est voluptatibus molestias vel, dolore quos magni similique error placeat debitis id sed aspernatur quae.'
     },
     {
         text: 'Article title 2',
@@ -32,7 +33,8 @@ const articlesTemp = [
             {text: 'Some coments 1'},
             {text: 'Some coments 1'},
             {text: 'Some coments 1'}
-        ]
+        ],
+        mainText: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium, iure fuga debitis dicta, ducimus accusantium quasi dolor non voluptatem minus id expedita sint inventore repellat ab odit fugit officiis! Beatae neque quis vel autem, doloremque eveniet expedita quisquam sint at eum. Quidem laborum neque pariatur quam et, sed, dicta odit consectetur modi voluptates necessitatibus sapiente quia vitae maxime totam consequuntur porro perspiciatis. Harum itaque consequatur error. Quibusdam repellendus repellat, esse sapiente iusto quidem, nemo tempore quo vitae dolores error quam dolorum voluptate minima. Ab quaerat est voluptatibus molestias vel, dolore quos magni similique error placeat debitis id sed aspernatur quae.'
     },
     {
         text: 'Article title 3',
@@ -46,7 +48,8 @@ const articlesTemp = [
         likes: '13',
         coments: [
             
-        ]
+        ],
+        mainText: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium, iure fuga debitis dicta, ducimus accusantium quasi dolor non voluptatem minus id expedita sint inventore repellat ab odit fugit officiis! Beatae neque quis vel autem, doloremque eveniet expedita quisquam sint at eum. Quidem laborum neque pariatur quam et, sed, dicta odit consectetur modi voluptates necessitatibus sapiente quia vitae maxime totam consequuntur porro perspiciatis. Harum itaque consequatur error. Quibusdam repellendus repellat, esse sapiente iusto quidem, nemo tempore quo vitae dolores error quam dolorum voluptate minima. Ab quaerat est voluptatibus molestias vel, dolore quos magni similique error placeat debitis id sed aspernatur quae.'
     },
 ]
 

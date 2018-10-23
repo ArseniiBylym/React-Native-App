@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, ScrollView, FlatList } from 'react-native';
 import Header from '../Header/Header';
 import ArticleList from '../ArticleList/ArticleList';
@@ -6,7 +6,10 @@ import { connect } from 'react-redux'
 import Constants from '../../lib/constants'
 
 
-class MainComponent extends React.Component {
+class MainComponent extends Component {
+	static navigationOptions = {
+		headerTitle: <Header title='Articles'/>,
+	  };
 
     componentDidMount = () => {
         this.props.getAllArticles()
@@ -15,8 +18,8 @@ class MainComponent extends React.Component {
 	render() {
 		return (
             <View style={styles.container}>
-                <Header />
-                <ArticleList />
+                {/* <Header /> */}
+                <ArticleList navigation={this.props.navigation}/>
             </View>
 		);
 	}
