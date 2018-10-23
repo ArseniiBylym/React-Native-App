@@ -1,59 +1,26 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button, ScrollView, FlatList } from 'react-native';
-import Header from './src/components/Header/Header';
-import ArticleItem from './src/components/ArticleItem/ArticleItem';
-import ArticleList from './src/components/ArticleList/ArticleList';
-// import { observable } from 'mobx';
-// import {observer} from 'mobx-react/native';
+// import { StyleSheet, Text, View, TextInput, Button, ScrollView, FlatList } from 'react-native';
+// import Header from './src/components/Header/Header';
+// import ArticleList from './src/components/ArticleList/ArticleList';
+import {Provider} from 'react-redux';
+import {createStore, applyMiddleware} from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import reducers from './src/store/reducers/reducers.js';
+import rootSaga from './src/store/sagas/sagas.js';
+import MainComponent from './src/components/MainComponent/MainComponent.js'
 
-// @observer
+
+const sagaMiddleware = createSagaMiddleware()
+let store = createStore(reducers, applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(rootSaga);
+
 export default class App extends React.Component {
 
-	// @observable store = {
-	//   inputText: ''
-	// }
-	state = {
-		inputText: '',
-		list: [
-		
-		]
-	}
-
-	onInputChangeHandler = (value) => {
-		this.setState({
-			inputText: value
-		})
-	}
-
-	onButtonPressHandler = () => {
-		if (this.state.inputText.trim()) {
-			this.setState((prevState) => {
-				return {
-					inputText: '',
-					list: prevState.list.concat(prevState.inputText)
-				}
-			})
-		}
-	}
-
 	render() {
-		
 		return (
-			
-			<View style={styles.container}>
-				<Header />
-				<ArticleList />
-			</View>
+			<Provider store={store} >
+				<MainComponent />
+			</Provider>
 		);
 	}
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		marginTop: 20,
-		backgroundColor: 'gray',
-		alignItems: 'center',
-		justifyContent: 'flex-start',
-	}
-});

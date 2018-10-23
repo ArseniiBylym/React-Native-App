@@ -1,0 +1,13 @@
+const Actions = {
+    GET_ARTICLES_LIST: "GET_ARTICLES_LIST",
+    GET_ARTICLES_LIST_SAGA: "GET_ARTICLES_LIST_SAGA",
+    GET_ARTICLES_LIST_SUCCESS: "GET_ARTICLES_LIST_SUCCESS",
+    GET_ARTICLES_LIST_FAILED: "GET_ARTICLES_LIST_FAILED",
+
+}
+
+const Constants = {
+    Actions
+}
+
+export default Constants

@@ -13,7 +13,6 @@ function ArticleItem(props) {
 
     return(
         <View style={styles.ArticleItem}>
-            {/* <Image style={styles.image} source={require('./img/articleImage.jpg')} /> */}
             <Image style={styles.image} source={props.config.img} />
             <View style={styles.info}>
                 <View style={styles.description}>
