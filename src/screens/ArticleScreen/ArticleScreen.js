@@ -15,7 +15,7 @@ class ArticleScreen extends Component{
     goToComents = () => {
         let index = this.props.navigation.getParam('index')
         const { navigate } = this.props.navigation
-        navigate('ComentsScreen', {coments: this.state.currentArticle.coments})
+        navigate('ComentsScreen', {coments: this.props.articles[index].coments})
     }
     
     
