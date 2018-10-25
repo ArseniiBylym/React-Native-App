@@ -4,6 +4,7 @@ import Header from '../../components/Header/Header'
 import { Icon } from 'native-base';
 import { connect } from 'react-redux'
 import CustomDrawer from '../../lib/UI/CustomDrawer'
+import Constants from '../../lib/constants'
 
 class ArticleScreen extends Component{
 
@@ -11,23 +12,24 @@ class ArticleScreen extends Component{
 
     }
 
-    goToComents = (index) => {
+    goToComents = () => {
+        let index = this.props.navigation.getParam('index')
         const { navigate } = this.props.navigation
         navigate('ComentsScreen', {coments: this.state.currentArticle.coments})
     }
-
-
+    
+    
     componentDidMount = () => {
+      
+    }
+            
+    componentWillUnmount = () => {
         let index = this.props.navigation.getParam('index')
-        this.setState({
-            currentArticle: {
-                ...this.props.articles[index]
-            }
-        })
+        this.props.increaseVisits(index)
     }
 
     render() {
-        if(!this.state.currentArticle) return null
+        // if(!this.props.articles[index]) return null
         const { navigation } = this.props;
         const index = navigation.getParam('index')
         return(
@@ -35,27 +37,27 @@ class ArticleScreen extends Component{
                 <View style={styles.Article}>
                     <Header title={`Article ${index + 1}`} />
                     <ScrollView style={styles.mainWrapper}>
-                        <ImageBackground style={styles.image} source={this.state.currentArticle.img}>
+                        <ImageBackground style={styles.image} source={this.props.articles[index].img}>
                             <View style={styles.titleWrapper}>
-                                <Text style={styles.title}>{this.state.currentArticle.text}</Text>
+                                <Text style={styles.title}>{this.props.articles[index].text}</Text>
                             </View>
                         </ImageBackground>
                         <View style={styles.mainTextWrapper}>
-                            <Text style={styles.mainText}>{this.state.currentArticle.mainText}</Text>
+                            <Text style={styles.mainText}>{this.props.articles[index].mainText}</Text>
                         </View>
                         <View style={styles.attributes}>
                             <View style={styles.attributesItem}>
                                 <Icon name='eye' style={styles.icon} />
-                                <Text style={styles.attributesText}>{this.state.currentArticle.views}</Text>
+                                <Text style={styles.attributesText}>{this.props.articles[index].views}</Text>
                             </View>
                             <View style={styles.attributesItem}>
                                 <Icon name='star' style={styles.icon} />
-                                <Text style={styles.attributesText}>{this.state.currentArticle.likes}</Text>
+                                <Text style={styles.attributesText}>{this.props.articles[index].likes}</Text>
                             </View>
                             <TouchableOpacity style={styles.attributesItem} onPress={this.goToComents}>
                                 <View style={styles.attributesItem__innerWrapper}>
                                     <Icon name='person' style={styles.icon} />
-                                    <Text style={styles.attributesText}>{`${this.state.currentArticle.coments.length}`}</Text>
+                                    <Text style={styles.attributesText}>{`${this.props.articles[index].coments.length}`}</Text>
                                 </View>
                             </TouchableOpacity>
                         </View>
@@ -65,6 +67,21 @@ class ArticleScreen extends Component{
         )
     }
 }
+
+
+const mapStateToProps = state => {
+    return{
+        articles: state.articles.articles_list
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return{
+        increaseVisits: (index) => {dispatch({type: Constants.Actions.INCREASE_VISITS_COUNTER_SAGA, index: index})}
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ArticleScreen)
 
 const styles = StyleSheet.create({
     Article: {
@@ -136,11 +153,3 @@ const styles = StyleSheet.create({
         fontSize: 16
     }
 })
-
-mapStateToProps = state => {
-    return{
-        articles: state.articles.articles_list
-    }
-}
-
-export default connect(mapStateToProps, null)(ArticleScreen)

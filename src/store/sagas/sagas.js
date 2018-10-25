@@ -1,5 +1,5 @@
 // import { delay } from 'redux-saga'
-import { put, takeLatest, all } from 'redux-saga/effects'
+import { put, takeLatest, all, select } from 'redux-saga/effects'
 import Constants from '../../lib/constants'
 
 const articlesTemp = [
@@ -87,13 +87,35 @@ const articlesTemp = [
 export default function* rootSaga() {
    yield all([
        getArticlesListWatcher(),
+       increaseVisitsCounterWatcher()
    ])
 }
 
 export function* getArticlesList(action) {
     yield put({type: Constants.Actions.GET_ARTICLES_LIST_SUCCESS, articles: articlesTemp})
 }
-
 export function* getArticlesListWatcher() {
     yield takeLatest(Constants.Actions.GET_ARTICLES_LIST_SAGA, getArticlesList)
+}
+
+
+
+export function* increaseVisitsCounter(action) {
+    // const state = yield select()
+
+    // const newArr = state.map((item) => item)
+
+    // const newArticles = state.map((item, i) => {
+    //     if(action.index == i) {
+    //         return {
+    //             ...item,
+    //             views: parseInt(item.views, 10) + 1 + ''
+    //         }
+    //     } else return item
+    // })
+   
+    yield put({type: Constants.Actions.INCREASE_VISITS_COUNTER_SUCCESS, index: action.index})
+}
+export function* increaseVisitsCounterWatcher() {
+    yield takeLatest(Constants.Actions.INCREASE_VISITS_COUNTER_SAGA, increaseVisitsCounter)
 }
