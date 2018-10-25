@@ -99,22 +99,19 @@ export function* getArticlesListWatcher() {
 }
 
 
-
 export function* increaseVisitsCounter(action) {
-    // const state = yield select()
+    const {articles, index} = action
 
-    // const newArr = state.map((item) => item)
-
-    // const newArticles = state.map((item, i) => {
-    //     if(action.index == i) {
-    //         return {
-    //             ...item,
-    //             views: parseInt(item.views, 10) + 1 + ''
-    //         }
-    //     } else return item
-    // })
+    const newArticles = articles.map((item, i) => {
+        if(index == i) {
+            return {
+                ...item,
+                views: parseInt(item.views, 10) + 1 + ''
+            }
+        } else return item
+    })
    
-    yield put({type: Constants.Actions.INCREASE_VISITS_COUNTER_SUCCESS, index: action.index})
+    yield put({type: Constants.Actions.INCREASE_VISITS_COUNTER_SUCCESS, articles: newArticles})
 }
 export function* increaseVisitsCounterWatcher() {
     yield takeLatest(Constants.Actions.INCREASE_VISITS_COUNTER_SAGA, increaseVisitsCounter)
