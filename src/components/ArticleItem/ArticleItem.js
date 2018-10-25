@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Text, Image, TouchableOpacity} from 'react-native';
+import {StyleSheet, View, Text, Image, TouchableOpacity, TouchableWithoutFeedback, TouchableHighlight} from 'react-native';
 import Tag from '../Tag/Tag'
 import ViewCounter from '../Counters/ViewCounter/ViewCounter'
 import LikesCounter from '../Counters/LikesCounter/LikesCounter'
@@ -13,29 +13,31 @@ function ArticleItem(props) {
 
 
     return(
-        <TouchableOpacity style={styles.ArticleItem} onPress={props.goToArticle.bind(this, props.index)}>
-            <Image style={styles.image} source={props.config.img} />
-            <View style={styles.info}>
-                <View style={styles.description}>
-                    <Text style={styles.title}>{props.config.text}</Text>
-                    <View style={styles.tagContainer}>
-                        {tags}
+        <TouchableHighlight style={styles.ArticleItem} onPress={props.goToArticle.bind(this, props.index)}>
+            <View>
+                <Image style={styles.image} source={props.config.img} />
+                <View style={styles.info}>
+                    <View style={styles.description}>
+                        <Text style={styles.title}>{props.config.text}</Text>
+                        <View style={styles.tagContainer}>
+                            {tags}
+                        </View>
+                    </View>
+                    <View style={styles.data}>
+                        <ViewCounter amount={props.config.views}/>
+                        <LikesCounter amount={props.config.likes}/>
+                        <ComentsCounter amount={props.config.coments}/>
                     </View>
                 </View>
-                <View style={styles.data}>
-                    <ViewCounter amount={props.config.views}/>
-                    <LikesCounter amount={props.config.likes}/>
-                    <ComentsCounter amount={props.config.coments}/>
-                </View>
             </View>
-        </TouchableOpacity>
+        </TouchableHighlight>
     )
 }
 
 const styles = StyleSheet.create({
     ArticleItem: {
         width: '100%',
-        padding: 5,
+        padding: 15,
         borderBottomColor: 'black',
         borderBottomWidth: 1,
         backgroundColor: 'white'

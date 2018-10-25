@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {StyleSheet, View, Text, Image, FlatList} from 'react-native';
 import ArticleItem from '../ArticleItem/ArticleItem';
+import Header from '../Header/Header'
 import {connect} from 'react-redux'
 
 class ArticleList extends Component {
@@ -10,17 +11,21 @@ class ArticleList extends Component {
 
     goToArticleHandler = (index) => {
         const { navigate } = this.props.navigation
-        navigate('Article', {index: index})
+        navigate('ArticleScreen', {index: index})
     }
 
     render() {
         if(!this.props.articles) return <View><Text>Ups..</Text></View>
         return(
             <View style={styles.list}>
+                <Header title='Articles' />
                 <FlatList 
                     data={this.props.articles}
-                    renderItem={({item, index}) => <ArticleItem index={index} goToArticle={this.goToArticleHandler} navigation={this.props.navigation} config={item} />}
                     keyExtractor={(item, index) => item.text}
+                    renderItem={({item, index}) => <ArticleItem index={index} 
+                                                        goToArticle={this.goToArticleHandler} 
+                                                        navigation={this.props.navigation} 
+                                                        config={item} />}
                 />
             </View>
         )
@@ -36,7 +41,8 @@ const mapStateToProps = state => {
 const styles = StyleSheet.create({
     list: {
         width: '100%',
-        height: '100%',
+        flex: 1
+        // height: '100%',
         // paddingBottom: 50
     }
 })

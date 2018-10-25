@@ -5,8 +5,8 @@ import { Icon } from 'native-base';
 function ComentsCounter(props) {
     return(
         <View style={styles.ComentsCounter}>
-            <Icon name='person' style={styles.icon} />
-            <Text style={styles.text}>{`${props.amount.length}`}</Text>
+                <Icon name='person' style={styles.icon} />
+                <Text style={styles.text}>{`${props.amount.length}`}</Text>
         </View>
     )
 }

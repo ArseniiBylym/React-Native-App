@@ -1,13 +1,13 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View, Text, TouchableHighlight} from 'react-native';
 import { Icon } from 'native-base';
 
 function Header (props) {
     return(
         <View style={styles.Header}>
-            <View style={styles.headerMenuButton}>
+            <TouchableHighlight style={styles.headerMenuButton} >
                 <Icon name='reorder' style={{color: 'white'}}/>
-            </View>
+            </TouchableHighlight>
             <Text style={styles.headerText}>{props.title}</Text>
             <View style={styles.headerSearchButton}>
                 <Icon name='search' style={{color: 'white'}} />
