@@ -14,18 +14,18 @@ const articles = (state = {requestSuccess: false}, action) => {
                 requestSuccess: false
             };
         case Constants.Actions.INCREASE_VISITS_COUNTER_SUCCESS: 
-            const newArr = state.articles_list.map((item, i) => {
-                if(action.index == i) {
-                    return {
-                        ...item,
-                        views: parseInt(item.views, 10) + 1 + ''
-                    }
-                } else return item
-            })
+            // const newArr = state.articles_list.map((item, i) => {
+            //     if(action.index == i) {
+            //         return {
+            //             ...item,
+            //             views: parseInt(item.views, 10) + 1 + ''
+            //         }
+            //     } else return item
+            // })
 
             return {
-                ...state,
-                articles_list: newArr,
+                // ...state,
+                articles_list: action.articles,
             }
         default: 
             return state;
