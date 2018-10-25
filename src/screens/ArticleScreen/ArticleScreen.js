@@ -15,7 +15,7 @@ class ArticleScreen extends Component{
     goToComents = () => {
         let index = this.props.navigation.getParam('index')
         const { navigate } = this.props.navigation
-        navigate('ComentsScreen', {coments: this.state.currentArticle.coments})
+        navigate('ComentsScreen', {coments: this.props.articles[index].coments})
     }
     
     
@@ -25,7 +25,7 @@ class ArticleScreen extends Component{
             
     componentWillUnmount = () => {
         let index = this.props.navigation.getParam('index')
-        this.props.increaseVisits(index)
+        this.props.increaseVisits(this.props.articles, index)
     }
 
     render() {
@@ -77,7 +77,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return{
-        increaseVisits: (index) => {dispatch({type: Constants.Actions.INCREASE_VISITS_COUNTER_SAGA, index: index})}
+        increaseVisits: (articles, index) => {dispatch({type: Constants.Actions.INCREASE_VISITS_COUNTER_SAGA, articles: articles, index: index})}
     }
 }
 

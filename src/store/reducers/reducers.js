@@ -24,7 +24,7 @@ const articles = (state = {requestSuccess: false}, action) => {
             // })
 
             return {
-                // ...state,
+                ...state,
                 articles_list: action.articles,
             }
         default: 
