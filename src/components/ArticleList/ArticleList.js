@@ -14,11 +14,19 @@ class ArticleList extends Component {
         navigate('ArticleScreen', {index: index})
     }
 
+    goToSearchHandler = () => {
+        const { navigate } = this.props.navigation
+        navigate('SearchScreen')
+    }
+
     render() {
         if(!this.props.articles) return <View><Text>Ups..</Text></View>
         return(
             <View style={styles.list}>
-                <Header title='Articles' />
+                <Header title='Articles' 
+                    showDrawer={this.props.showDrawer} 
+                    goToSearchHandler={this.goToSearchHandler}
+                />
                 <FlatList 
                     data={this.props.articles}
                     keyExtractor={(item, index) => item.text}

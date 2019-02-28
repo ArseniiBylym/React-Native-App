@@ -7,10 +7,15 @@ import CustomDrawer from '../../lib/UI/CustomDrawer'
 
 
 class MainScreen extends Component {
+	
+	constructor(props) {
+        super(props);
+        this.refDrawer = React.createRef();
+    }
 
-	state= {
-		
-	}
+    showDrawer = () => {
+        this.refDrawer.current.openDrawer()
+    }
 
     componentDidMount = () => {
         this.props.getAllArticles()
@@ -19,9 +24,9 @@ class MainScreen extends Component {
 	render() {
 
 		return (
-			<CustomDrawer>
+			<CustomDrawer customRef={this.refDrawer}>
 				<View style={styles.container}>
-					<ArticleList navigation={this.props.navigation}/>
+					<ArticleList navigation={this.props.navigation} showDrawer={this.showDrawer}/>
 				</View>
 			</CustomDrawer>
 		);

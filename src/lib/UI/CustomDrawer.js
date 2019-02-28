@@ -1,26 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, View, DrawerLayoutAndroid, Text} from 'react-native';
 
-function CustomDrawer (props) {
-    return(
-        <DrawerLayoutAndroid
+class CustomDrawer extends Component {
+
+    render() {
+
+        return(
+            <DrawerLayoutAndroid
+            
             drawerWidth={250}
             drawerPosition={DrawerLayoutAndroid.positions.Left}
             renderNavigationView={() => (
                 <View style = {styles.drawerWrapper}>
                     <View style={styles.drawerItem}>
-                        <Text style={styles.drawerItemText}>Some text 1</Text>
+                        <Text style={styles.drawerItemText}>Home</Text>
                     </View>
                     <View style={styles.drawerItem}>
-                        <Text style={styles.drawerItemText}>Some text 1</Text>
+                        <Text style={styles.drawerItemText}>Log In</Text>
                     </View>
                     <View style={styles.drawerItem}>
-                        <Text style={styles.drawerItemText}>Some text 1</Text>
+                        <Text style={styles.drawerItemText}>Log Out</Text>
+                    </View>
+                    <View style={styles.drawerItem}>
+                        <Text style={styles.drawerItemText}>Profile</Text>
                     </View>
                 </View>
             )}
-        >{props.children}</DrawerLayoutAndroid>
-    )
+            ref={this.props.customRef}
+            >{this.props.children}</DrawerLayoutAndroid>
+        )
+    }
 }
 
 export default CustomDrawer
@@ -30,9 +39,10 @@ const styles = StyleSheet.create({
 	drawerWrapper: {
 		flex: 1,
 		width: '100%',
-		backgroundColor: 'black',
+		backgroundColor: 'rgba(0,0,0,.8)',
 		alignItems: 'center',
-		justifyContent: 'flex-start'
+        justifyContent: 'flex-start',
+        paddingVertical: 40
 	},
 	drawerItem: {
 		width: '100%',

@@ -8,8 +8,16 @@ import Constants from '../../lib/constants'
 
 class ArticleScreen extends Component{
 
-    state = {
+    constructor(props) {
+        super(props);
+        this.state = {
 
+        }
+        this.refDrawer = React.createRef();
+    }
+
+    showDrawer = () => {
+        this.refDrawer.current.openDrawer()
     }
 
     goToComents = () => {
@@ -17,10 +25,14 @@ class ArticleScreen extends Component{
         const { navigate } = this.props.navigation
         navigate('ComentsScreen', {coments: this.props.articles[index].coments})
     }
-    
+
+    goToSearchHandler = () => {
+        const { navigate } = this.props.navigation
+        navigate('SearchScreen')
+    }
     
     componentDidMount = () => {
-      
+      console.log('hello')
     }
             
     componentWillUnmount = () => {
@@ -33,9 +45,9 @@ class ArticleScreen extends Component{
         const { navigation } = this.props;
         const index = navigation.getParam('index')
         return(
-            <CustomDrawer>
+            <CustomDrawer customRef={this.refDrawer}>
                 <View style={styles.Article}>
-                    <Header title={`Article ${index + 1}`} />
+                    <Header title={`Article ${index + 1}`} showDrawer={this.showDrawer} goToSearchHandler={this.goToSearchHandler}/>
                     <ScrollView style={styles.mainWrapper}>
                         <ImageBackground style={styles.image} source={this.props.articles[index].img}>
                             <View style={styles.titleWrapper}>

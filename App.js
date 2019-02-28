@@ -9,6 +9,7 @@ import rootSaga from './src/store/sagas/sagas.js';
 import MainScreen from './src/screens/MainScreen/MainScreen.js'
 import ArticleScreen from './src/screens/ArticleScreen/ArticleScreen.js'
 import ComentsScreen from './src/screens/ComentsScreen/ComentsScreen.js'
+import SearchScreen from './src/screens/SearchScreen/SearchScreen.js'
 
 
 const sagaMiddleware = createSagaMiddleware()
@@ -19,7 +20,8 @@ export const Navigator = createStackNavigator(
 	{
 		MainScreen: {screen: MainScreen},
 		ArticleScreen: {screen: ArticleScreen},
-		ComentsScreen: {screen: ComentsScreen}
+		ComentsScreen: {screen: ComentsScreen},
+		SearchScreen: {screen: SearchScreen}
 	},
 	{
 		initialRouteName: 'MainScreen',

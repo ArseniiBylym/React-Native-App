@@ -5,13 +5,13 @@ import { Icon } from 'native-base';
 function Header (props) {
     return(
         <View style={styles.Header}>
-            <TouchableHighlight style={styles.headerMenuButton} >
+            <TouchableHighlight style={styles.headerMenuButton} onPress={props.showDrawer}>
                 <Icon name='reorder' style={{color: 'white'}}/>
             </TouchableHighlight>
             <Text style={styles.headerText}>{props.title}</Text>
-            <View style={styles.headerSearchButton}>
+            <TouchableHighlight style={styles.headerSearchButton} onPress={props.goToSearchHandler}>
                 <Icon name='search' style={{color: 'white'}} />
-            </View>   
+            </TouchableHighlight>   
         </View>
     )
 }
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
         height: 30,
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     }
 })
 
